@@ -10,14 +10,24 @@ class SessionFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        $login = false;
+        $session = \Config\Services::session();
+        
+        $guest = false;
+        $admin = false;
+        $koki = false;
+        $pelayan = false;
+        $kasir = false;
 		if ($arguments !== null) {
 			foreach ($arguments as $arg) {
-				$login = ($arg == 'login'? true : false);
+                $guest = ($arg == 'guest'? true : false);
+                $admin = ($arg == 'admin'? true : false);
+                $koki = ($arg == 'koki'? true : false);
+                $pelayan = ($arg == 'pelayan'? true : false);
+                $kasir = ($arg == 'kasir'? true : false);
 			}
 		}
 
-        if ($session->has('id_akun') && $session->has('password') && $login) {
+        if ($session->has('id_akun') && $session->has('password')) {
             $id_akun = $session->get('id_akun');
             $pass = $session->get('password');
 
@@ -45,22 +55,38 @@ class SessionFilter implements FilterInterface
                 return redirect()->route('/');
             }
 
-            $jabatanSql = 'SELECT jabatan FROM pegawai JOIN akun ON pegawai.id_akun=akun.id_akun WHERE id_akun = ?';
+            $jabatanSql = 'SELECT jabatan FROM pegawai JOIN akun ON pegawai.id_akun=akun.id_akun WHERE akun.id_akun = ?';
             $jabatanResult = $db->query($jabatanSql, [$id_akun]);
             $jabatan = strtolower($jabatanResult->getRow()->jabatan);
-            
+
             switch ($jabatan) {
                 case 'admin':
-                    // do nothing
+                    if ($admin) {
+                        // do nothing
+                    } else {
+                        return redirect()->route('admin/dashboard');
+                    }
                     break;
                 case 'koki':
-                    // do nothing
+                    if ($koki) {
+                        // do nothing
+                    } else {
+                        return redirect()->route('koki/dashboard');
+                    }
                     break;
                 case 'pelayan':
-                    // do nothing
+                    if ($pelayan) {
+                        // do nothing
+                    } else {
+                        return redirect()->route('pelayan/dashboard');
+                    }
                     break;
                 case 'kasir':
-                    // do nothing
+                    if ($kasir) {
+                        // do nothing
+                    } else {
+                        return redirect()->route('kasir/dashboard');
+                    }
                     break;
                 default:
                     $hapusPegawaiSql = 'DELETE FROM pegawai WHERE id_akun = ?';
@@ -73,7 +99,7 @@ class SessionFilter implements FilterInterface
                     return redirect()->route('/');
             }
         } else {
-            if (!$login) {
+            if (!$guest) {
                 return redirect()->route('/');
             }
         }

@@ -32,11 +32,41 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index', ['filter' => 'noadmin']);
+$routes->get('/', 'Home::index', ['filter' => 'visitor:guest']);
 
 $routes->match(['get', 'post'], 'xyz/new', 'Sistem::adminBaru', ['filter' => 'noadmin:noreturn']);
-$routes->match(['get', 'post'], 'login', 'Sistem::login', ['filter' => 'visitor:login']);
-$routes->get('logout', 'Sistem::logout', ['filter' => 'noadmin']);
+$routes->match(['get', 'post'], 'login', 'Sistem::login', ['filter' => 'visitor:guest']);
+$routes->group('admin', function($routes) {
+	$routes->get('/', 'Admin\AdminHome::index', ['filter' => 'visitor:admin']);
+	$routes->get('dashboard', 'Admin\AdminHome::index', ['filter' => 'visitor:admin']);
+	
+	$routes->group('pegawai', function($routes) {
+		$routes->get('/', 'Admin\AdminPegawai::index', ['filter' => 'visitor:admin']);
+		$routes->match(['get', 'post'], 'tambah', 'Admin\AdminPegawai::tambah', ['filter' => 'visitor:admin']);
+		$routes->match(['get', 'post'], 'edit', 'Admin\AdminPegawai::edit', ['filter' => 'visitor:admin']);
+		$routes->post('hapus', 'Admin\AdminPegawai::hapus', ['filter' => 'visitor:admin']);
+	});
+
+	$routes->group('menu', function($routes) {
+		$routes->get('/', 'Admin\AdminMenu::index', ['filter' => 'visitor:admin']);
+		$routes->match(['get', 'post'], 'tambah', 'Admin\AdminMenu::tambah', ['filter' => 'visitor:admin']);
+		$routes->match(['get', 'post'], 'edit', 'Admin\AdminMenu::edit', ['filter' => 'visitor:admin']);
+		$routes->post('hapus', 'Admin\AdminMenu::hapus', ['filter' => 'visitor:admin']);
+	});
+});
+$routes->group('koki', function($routes) {
+	$routes->get('/', 'Koki\KokiHome::index', ['filter' => 'visitor:koki']);
+	$routes->get('dashboard', 'Koki\KokiHome::index', ['filter' => 'visitor:koki']);
+});
+$routes->group('pelayan', function($routes) {
+	$routes->get('/', 'Pelayan\PelayanHome::index', ['filter' => 'visitor:pelayan']);
+	$routes->get('dashboard', 'Pelayan\PelayanHome::index', ['filter' => 'visitor:pelayan']);
+});
+$routes->group('kasir', function($routes) {
+	$routes->get('/', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
+	$routes->get('dashboard', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
+});
+$routes->match(['get', 'post'], 'logout', 'Sistem::logout', ['filter' => 'noadmin']);
 
 
 /*

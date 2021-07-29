@@ -27,7 +27,7 @@ class NoAdminFilter implements FilterInterface
             }
         } else { // ada admin
             if ($noreturn) {
-                return redirect()->route('/');
+                throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
             }
         }
     }
