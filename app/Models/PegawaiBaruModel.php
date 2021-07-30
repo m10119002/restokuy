@@ -14,7 +14,7 @@ class PegawaiBaruModel extends Model
     // protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['nama_pegawai', 'alamat', 'tempat_lahir', 'tgl_lahir', 'no_hp', 'jabatan', 'id_akun'];
+    protected $allowedFields = ['id_pegawai', 'nama_pegawai', 'alamat', 'tempat_lahir', 'tgl_lahir', 'no_hp', 'jabatan', 'id_akun'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';

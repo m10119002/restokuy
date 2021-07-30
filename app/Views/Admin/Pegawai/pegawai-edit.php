@@ -24,24 +24,28 @@
             <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
           </symbol>
         </svg>
+        <?php if(isset($errorMessage)) : ?>
         <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
             <use xlink:href="#exclamation-triangle-fill" />
           </svg>
           <div>
-            Gagal Mengubah Data!
+            <?php echo $errorMessage; ?>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <?php endif ?>
+        <?php if(isset($successMessage)) : ?>
         <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
             <use xlink:href="#check-circle-fill" />
           </svg>
           <div>
-            Data Berhasil Diubah!
+            <?php echo $successMessage; ?>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <?php endif ?>
         <!-- Alert -->
 
         <!-- function Alert
@@ -72,79 +76,24 @@
       </div>";
   }
   -->
-        <form method="post" action="">
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleIDPegawai" class="form-label">ID Pegawai</label>
-            </div>
-            <div class="col-auto">
-              <input type="text" class="form-control" id="exampleIDPegawai" name="id_pegawai" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleName" class="form-label">Nama Lengkap</label>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" id="exampleName" name="nama" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleTempat" class="form-label">Tempat</label>
-            </div>
-            <div class="col-auto">
-              <input type="text" class="form-control" id="exampleTempat" name="tempat" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleTanggalLahir" class="form-label">Tanggal Lahir</label>
-            </div>
-            <div class="col-auto">
-              <input type="Date" class="form-control" id="exampleTanggalLahir" name="tgl_lahir" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleAlamat" class="form-label">Alamat</label>
-            </div>
-            <div class="col">
-              <textarea class="form-control" id="exampleAlamat" cols="1" rows="3" name="alamat" required></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleJabatan" class="form-label">Jabatan</label>
-            </div>
-            <div class="col-auto">
-              <select class="form-select" name="jabatan" id="exampleJabatan" required>
-                <option selected>~ Pilih Jabatan ~</option>
-                <option value="Pelayan">Pelayan</option>
-                <option value="Kasir">Kasir</option>
-                <option value="Koki">Koki</option>
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="exampleUsername" class="form-label">Username</label>
-            </div>
-            <div class="col-auto">
-              <input type="text" class="form-control" id="exampleUsername" name="username" required>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label for="examplePassword" class="form-label">Password</label>
-            </div>
-            <div class="col-auto">
-              <input type="password" class="form-control" id="examplePassword" name="password" required>
-            </div>
-          </div>
+        <!--<form method="post" action="">-->
+        <?php echo form_open('admin/pegawai/edit'); ?>
+          <?php
+            $passData = [
+              'formData' => $formData
+            ];
+            if (isset($validation)) {
+              $passData = [
+                'formData' => $formData,
+                'validation' => $validation
+              ];
+            }
+          ?>
+          <?php echo view('Admin\Pegawai\form', $passData); ?>
           <button type="submit" class="btn font-btn bg--primary font-white me-2" name="btn_tambah">Simpan</button>
           <button type="reset" class="btn font-btn bg--four font-white" name="btn_reset">Reset</button>
-        </form>
+        <?php echo form_close(); ?>
+        <!--</form>-->
 
       </div>
     </div>
