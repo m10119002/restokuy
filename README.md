@@ -15,6 +15,9 @@ $routes->group() : mengelompokkan route yang ada didalamnya sekaligus menyertaka
 
 susunan parameter $routes yang diatas yaitu (nama route/url, nama controller::nama function, filter => nama filter:value).
 
+0.3:
++ Fitur Admin/Pegawai done.
+
 0.2:
 + Modif index.php untuk AdminBaru jadi adminbaru.php.
 + Fitur Tambah AdminBaru beres, lengkap dengan Validasi (ditambah juga validasi setiap field/input).
