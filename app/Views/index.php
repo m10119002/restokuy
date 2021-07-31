@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/theme.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/assets/css/theme.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/assets/css/main.css'); ?>">
     <title>Restokuy</title>
 </head>
 
@@ -105,7 +105,7 @@
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/assets/js/bootstrap.bundle.min.js'); ?>"></script>
 
 </body>
 

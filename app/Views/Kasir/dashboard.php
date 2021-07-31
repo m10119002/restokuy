@@ -20,7 +20,7 @@
               <div class="col text-center">
                 <div class="row">
                   <div class="col">
-                    <img src="<?php echo base_url('assets/img/icon-kasir-dashboard.svg'); ?>" alt="Pegawai" class="icon-dashboard">
+                    <img src="<?php echo base_url('public/assets/img/icon-kasir-dashboard.svg'); ?>" alt="Pegawai" class="icon-dashboard">
                   </div>
                 </div>
                 <div class="row">
@@ -39,7 +39,7 @@
               <div class="row justify-content-center">
                 <div class="col-4">
                   <div class="card cards p-3 card-shadow">
-                    <img src="<?php echo base_url('assets/img/bg_pembayaran.png'); ?>" class="card-img-top m-auto" alt="pembayaran">
+                    <img src="<?php echo base_url('public/assets/img/bg_pembayaran.png'); ?>" class="card-img-top m-auto" alt="pembayaran">
                     <div class="card-body">
                       <h5 class="card-title text-center font-primary mb-3">Pembayaran</h5>
                       <p class="card-text font-primary fw-normal">Informasi transaksi pemesanan.</p>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-4">
                   <div class="card cards p-3 card-shadow">
-                    <img src="<?php echo base_url('assets/img/bg_rekapitulasi.png'); ?>" class="card-img-top m-auto" alt="rekapitulasi">
+                    <img src="<?php echo base_url('public/assets/img/bg_rekapitulasi.png'); ?>" class="card-img-top m-auto" alt="rekapitulasi">
                     <div class="card-body">
                       <h5 class="card-title text-center font-primary mb-3">Rekapitulasi</h5>
                       <p class="card-text font-primary fw-normal">Informasi pendapatan.</p>
@@ -69,7 +69,7 @@
   </main>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
+  <script src="<?php echo base_url('public/assets/js/bootstrap.bundle.min.js'); ?>"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
   <script>
     // $('#btn-sidebar').click(function () {
