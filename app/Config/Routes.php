@@ -65,6 +65,9 @@ $routes->group('pelayan', function($routes) {
 $routes->group('kasir', function($routes) {
 	$routes->get('/', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
 	$routes->get('dashboard', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
+
+	$routes->match(['get', 'post'], 'transaksi', 'Kasir\KasirTransaksi::index', ['filter' => 'visitor:kasir']);
+	$routes->match(['get', 'post'], 'rekapitulasi', 'Kasir\KasirRekapitulasi::index', ['filter' => 'visitor:kasir']);
 });
 $routes->match(['get', 'post'], 'logout', 'Sistem::logout', ['filter' => 'noadmin']);
 
