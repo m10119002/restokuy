@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 
-<?php echo view('Template\head'); ?>
+<?php echo view('Template/head'); ?>
 
 <body>
-  <?php echo view('Template\header'); ?>
+  <?php echo view('Template/header'); ?>
 
   <main class="container-fluid">
     <div class="row">
-      <?php echo view('Kasir\sidebar'); ?>
+      <?php echo view('Kasir/sidebar'); ?>
       <div class="col">
         <h1 class="text-center my-5 font-primary">Selamat Datang, Kasir.</h1>
         <div class="row justify-content-evenly">

@@ -11,6 +11,6 @@ class KasirHome extends BaseController
     
     public function index()
 	{
-		return view('Kasir\dashboard');
+		return view('Kasir/dashboard');
 	}
 }

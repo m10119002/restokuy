@@ -11,6 +11,6 @@ class KasirRekapitulasi extends BaseController
     
     public function index()
 	{
-		return view('Kasir\rekapitulasi');
+		return view('Kasir/rekapitulasi');
 	}
 }

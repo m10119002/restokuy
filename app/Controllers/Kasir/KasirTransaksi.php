@@ -11,6 +11,6 @@ class KasirTransaksi extends BaseController
     
     public function index()
 	{
-		return view('Kasir\transaksi');
+		return view('Kasir/transaksi');
 	}
 }

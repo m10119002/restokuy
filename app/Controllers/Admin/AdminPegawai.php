@@ -33,7 +33,7 @@ class AdminPegawai extends BaseController
             $returnData = array_merge($returnData, $moreData);
         }
 
-        return view('Admin\Pegawai\pegawai', $returnData);
+        return view('Admin/Pegawai/pegawai', $returnData);
 	}
 
     public function tambah()
@@ -59,7 +59,7 @@ class AdminPegawai extends BaseController
                     'validation' => $this->validation,
                     'error_message' => $err_msg
                 ];
-                return view('Admin\Pegawai\pegawai-tambah', $returnData);
+                return view('Admin/Pegawai/pegawai-tambah', $returnData);
             }
 
             $data_akun = [
@@ -72,7 +72,7 @@ class AdminPegawai extends BaseController
                 $returnData = [
                     'errorMessage' => 'Gagal menambahkan Data!'
                 ];
-                return view('Admin\Pegawai\pegawai-tambah', $returnData);
+                return view('Admin/Pegawai/pegawai-tambah', $returnData);
             }
             $id_insert = $akunBaruModel->getInsertID();
 
@@ -93,15 +93,15 @@ class AdminPegawai extends BaseController
                 $returnData = [
                     'errorMessage' => 'Gagal menambahkan Data!'
                 ];
-                return view('Admin\Pegawai\pegawai-tambah', $returnData);
+                return view('Admin/Pegawai/pegawai-tambah', $returnData);
             }
             
             $returnData = [
                 'successMessage' => 'Data berhasil ditambah!'
             ];
-            return view('Admin\Pegawai\pegawai-tambah', $returnData);
+            return view('Admin/Pegawai/pegawai-tambah', $returnData);
         } else {
-            return view('Admin\Pegawai\pegawai-tambah');
+            return view('Admin/Pegawai/pegawai-tambah');
         }
     }
 
@@ -138,7 +138,7 @@ class AdminPegawai extends BaseController
                     'validation' => $this->validation,
                     'error_message' => $err_msg
                 ];
-                return view('Admin\Pegawai\pegawai-edit', $returnData);
+                return view('Admin/Pegawai/pegawai-edit', $returnData);
             }
 
             $formData['id_pegawai'] = $current_id;
@@ -158,7 +158,7 @@ class AdminPegawai extends BaseController
                     'formData' => $formData,
                     'errorMessage' => 'Gagal merubah Data!'
                 ];
-                return view('Admin\Pegawai\pegawai-edit', $returnData);
+                return view('Admin/Pegawai/pegawai-edit', $returnData);
             }
 
             $data_pegawai = [
@@ -177,14 +177,14 @@ class AdminPegawai extends BaseController
                     'formData' => $formData,
                     'errorMessage' => 'Gagal merubah Data!'
                 ];
-                return view('Admin\Pegawai\pegawai-edit', $returnData);
+                return view('Admin/Pegawai/pegawai-edit', $returnData);
             }
             
             $returnData = [
                 'formData' => $formData,
                 'successMessage' => 'Data berhasil dirubah!'
             ];
-            return view('Admin\Pegawai\pegawai-edit', $returnData);
+            return view('Admin/Pegawai/pegawai-edit', $returnData);
         } else {
             $id_pegawai = $this->request->getGet('id');
 
@@ -216,7 +216,7 @@ class AdminPegawai extends BaseController
             $returnData = [
                 'formData' => $formData
             ];
-            return view('Admin\Pegawai\pegawai-edit', $returnData);
+            return view('Admin/Pegawai/pegawai-edit', $returnData);
         }
     }
 

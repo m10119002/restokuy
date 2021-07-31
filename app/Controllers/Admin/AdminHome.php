@@ -27,6 +27,6 @@ class AdminHome extends BaseController
 		$returnData = [
 			'counter' => $this->getCounter()
 		];
-        return view('Admin\dashboard', $returnData);
+        return view('Admin/dashboard', $returnData);
 	}
 }

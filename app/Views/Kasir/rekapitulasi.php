@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 
-<?php echo view('Template\head'); ?>
+<?php echo view('Template/head'); ?>
 
 <body>
-  <?php echo view('Template\header'); ?>
+  <?php echo view('Template/header'); ?>
 
   <main class="container-fluid">
     <div class="row">
-      <?php echo view('Kasir\sidebar'); ?>
+      <?php echo view('Kasir/sidebar'); ?>
 
       <div class="col m-5">
         <h2 class="font-primary">Informasi Rekapitulasi</h2>

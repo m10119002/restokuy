@@ -40,7 +40,7 @@ class AdminMenu extends BaseController
             ];
             $returnData = array_merge($returnData, $moreData);
         }
-        return view('Admin\Menu\menu', $returnData);
+        return view('Admin/Menu/menu', $returnData);
 	}
 
     public function tambah()
@@ -59,15 +59,15 @@ class AdminMenu extends BaseController
                     'formData' => $formData,
                     'errorMessage' => 'Gagal menambahkan data!'
                 ];
-                return view('Admin\Menu\menu-tambah', $returnData);
+                return view('Admin/Menu/menu-tambah', $returnData);
             }
 
             $returnData = [
                 'successMessage' => 'Data berhasil ditambah!'
             ];
-            return view('Admin\Menu\menu-tambah', $returnData);
+            return view('Admin/Menu/menu-tambah', $returnData);
         } else {
-            return view('Admin\Menu\menu-tambah');
+            return view('Admin/Menu/menu-tambah');
         }
     }
 
@@ -119,14 +119,14 @@ class AdminMenu extends BaseController
                     'formData' => $this->editAutoFill($id),
                     'errorMessage' => 'Gagal merubah data!'
                 ];
-                return view('Admin\Menu\menu-edit', $returnData);
+                return view('Admin/Menu/menu-edit', $returnData);
             }
 
             $returnData = [
                 'formData' => $this->editAutoFill($id),
                 'successMessage' => 'Data berhasil dirubah!'
             ];
-            return view('Admin\Menu\menu-edit', $returnData);
+            return view('Admin/Menu/menu-edit', $returnData);
         } else {
             $id = $this->request->getGet('id');
             if (!$this->editVerify($id)) {
@@ -136,7 +136,7 @@ class AdminMenu extends BaseController
             $returnData = [
                 'formData' => $this->editAutoFill($id)
             ];
-            return view('Admin\Menu\menu-edit', $returnData);
+            return view('Admin/Menu/menu-edit', $returnData);
         }
     }
 
