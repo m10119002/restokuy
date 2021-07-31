@@ -225,7 +225,7 @@
     </div>
     <div class="col-auto">
         <?php if(isset($formData['password_ulang'])): ?>
-            <input type="password_ulang" class="form-control" id="examplePasswordUlang" name="password_ulang" value="<?php echo $formData['password_ulang']; ?>" required>
+            <input type="password" class="form-control" id="examplePasswordUlang" name="password_ulang" value="<?php echo $formData['password_ulang']; ?>" required>
             <?php if(isset($validation)): ?>
             <?php if($validation->hasError('password_ulang')): ?>
                 <div class="invalid-feedback d-block">

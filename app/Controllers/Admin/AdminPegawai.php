@@ -23,12 +23,12 @@ class AdminPegawai extends BaseController
 
         if ($this->session->getFlashdata('error')) {
             $moreData = [
-                'errorMessage' => $this->session->getFlashdata('errMsg')
+                'errorMessage' => $this->session->getFlashdata('msg')
             ];
             $returnData = array_merge($returnData, $moreData);
         } else if ($this->session->getFlashdata('success')) {
             $moreData = [
-                'successMessage' => $this->session->getFlashdata('errMsg')
+                'successMessage' => $this->session->getFlashdata('msg')
             ];
             $returnData = array_merge($returnData, $moreData);
         }
@@ -84,7 +84,7 @@ class AdminPegawai extends BaseController
                 'tempat_lahir' => $formData['tempat_lahir'],
                 'tgl_lahir' => $formData['tgl_lahir'],
                 'no_hp' => $formData['no_hp'],
-                'jabatan' => $formData['jabatan'],
+                'jabatan' => strtolower($formData['jabatan']),
                 'id_akun' => $id_insert
             ];
 
@@ -168,7 +168,7 @@ class AdminPegawai extends BaseController
                 'tempat_lahir' => $formData['tempat_lahir'],
                 'tgl_lahir' => $formData['tgl_lahir'],
                 'no_hp' => $formData['no_hp'],
-                'jabatan' => $formData['jabatan']
+                'jabatan' => strtolower($formData['jabatan'])
             ];
 
             $pegawaiBaruModel = model('App\Models\PegawaiBaruModel');
@@ -228,7 +228,8 @@ class AdminPegawai extends BaseController
         $pegawai = $pegawaiModel->where('id_pegawai', $id)->first();
 
         if (empty($pegawai)) {
-            $this->session->setFlashdata('errMsg', 'Gagal hapus, Data pegawai yang dimaksud tidak ada!');
+            $this->session->setFlashdata('error', true);
+            $this->session->setFlashdata('msg', 'Gagal hapus, Data pegawai yang dimaksud tidak ada!');
             return redirect()->route('admin/pegawai');
         }
 
@@ -236,7 +237,8 @@ class AdminPegawai extends BaseController
         $akun = $akunModel->where('id_akun', $pegawai['id_akun'])->first();
 
         if (empty($akun)) {
-            $this->session->setFlashdata('errMsg', 'Gagal hapus, Data akun yang dimaksud tidak ada!');
+            $this->session->setFlashdata('error', true);
+            $this->session->setFlashdata('msg', 'Gagal hapus, Data akun yang dimaksud tidak ada!');
             return redirect()->route('admin/pegawai');
         }
 
@@ -244,7 +246,7 @@ class AdminPegawai extends BaseController
         $akunModel->delete($pegawai['id_akun']);
 
         $this->session->setFlashdata('success', true);
-        $this->session->setFlashdata('errMsg', 'Data berhasil dihapus!');
+        $this->session->setFlashdata('msg', 'Data berhasil dihapus!');
         return redirect()->route('admin/pegawai');
     }
 }
