@@ -11,6 +11,12 @@ class KasirTransaksi extends BaseController
     
     public function index()
 	{
-		return view('Kasir/transaksi');
+		$transaksiModel = model('App\Model\TransaksiModel');
+
+		$returnData = [
+			'tabel_pembayaran' => $transaksiModel->getTabelPembayaran(),
+			'tabel_pembayaran_lunas' => $transaksiModel->getTabelPembayaranLunas()
+		];
+		return view('Kasir/transaksi', $returnData);
 	}
 }

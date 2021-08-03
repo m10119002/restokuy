@@ -1,59 +1,57 @@
-Apa saja yang dipindahkan?
-semua file tampilan yang ada sebelumnya dipindahkan ke folder ../restokuy/public/__tampilan/
+Live Demo : http://hitatest.net/restokuy
+Import Database : restokuy (3).sql
 
-Bagaimana jika ingin buat baru/edit atau test halaman tampilan?
-Tidak ada perubahan layaknya tidak menggunakan Codeigniter, hanya saja untuk akses ke halaman tampilan langsung tanpa ada ikut campur dari Codeigniter, kunjungi : http://localhost/restokuy/public/__tampilan/nama-file-halaman.(php/html)
+Sistem:
+[1] Login = done.
+[2] AdminBaru + Validasi (kondisi: tidak ada pegawai dengan jabatan 'admin') = done.
+[3] Logout = done.
 
-Tutorial:
-../restokuy/app/Config/Routes.php
-File config untuk memberikan instruksi apa yang harus dilakukan Codeigniter ketika diberikan alamat url tertentu.
+Admin:
+[1] Dashboard (halaman) = done.
+[2] Pegawai :
+[2] [1] Tampil Tabel Pegawai = done.
+[2] [2] Tambah Pegawai = done.
+[2] [3] Edit Pegawai = done.
+[2] [4] Hapus Pegawai = done.
+[2] [*] Bonus Validasi = done.
+[3] Menu :
+[3] [1] Tampil Tabel Menu = done.
+[3] [2] Tambah Menu = rusak, jenis_menu & kategori_menu (Perubahan Tipe Data VARCHAR menjadi ENUM, data hilang jika tidak sesuai ENUM).
+[3] [3] Edit Menu = rusak, jenis_menu & kategori_menu (Perubahan Tipe Data VARCHAR menjadi ENUM, data hilang jika tidak sesuai ENUM).
+[3] [4] Hapus Menu = done.
 
-$routes->get() : form method="GET", secara default ketika load halaman.. metode yang akan digunakan yaitu "GET" meski tidak ada form / tidak submit form.
-$routes->post() : form method="POST", hanya bisa dilakukan via form submit.
-$routes->match(['get', 'post']) : terima request "GET" dan "POST" pada route/url yang sama. agar bisa menggunakan route/url yang sama ketika submit form.
-$routes->group() : mengelompokkan route yang ada didalamnya sekaligus menyertakan nama group pada url di setiap routes.
+Kasir:
+[1] Dashboard (halaman) = done.
+[2] Pembayaran :
+[2] [1] Tampil Tabel Informasi Pembayaran = done.
+[2] [2] Tampil Tabel Pembayaran Lunas = done.
+[2] [3] Tampil Tabel Informasi Rekapitulasi = done.
+[2] [4] Fungsi Filter pada Tabel Informasi Rekapitulasi = done.
+[2] [5] Fungsi Cetak = not done.
+[2] [6] Fungsi Lunas = not done.
+[2] [7] Fungsi Belum Lunas = not done.
 
-susunan parameter $routes yang diatas yaitu (nama route/url, nama controller::nama function, filter => nama filter:value).
+Koki:
+[1] Dashboard (halaman) = done.
+[2] Pemesanan :
+[2] [1] Tampil Tabel Informasi Pemesanan = done.
+[2] [2] Informasi Detail Pemesanan = not done.
+[2] [3] Fungsi Selesai = not done.
+[3] Ketersediaan Menu :
+[3] [1] Tampil Tabel Informasi Ketersediaan Menu = done.
+[3] [2] Fungsi Tersedia/Tidak Tersedia = not done.
 
-0.4:
-+ Fitur Admin/Menu done.
+Pelayan:
+[1] Dashboard (halaman) = done.
+[2] Pesanan :
+[2] [1] Tampil Tabel Pesanan (berdasarkan ID Pegawai) = done.
+[2] [2] Halaman Tambah Pesanan = done.
+[2] [3] Fungsi Tambah Pesanan = not done.
+[2] [4] Fungsi Edit Pesanan = not done.
+[2] [5] Fungsi Hapus Pesanan = not done.
+[2] [6] Tampil Kartu Menu (untuk menambahkan menu pada isi form Tambah dan Edit Pesanan) = not done.
+[2] [7] Fungsi Tambah Menu = not done.
+[2] [8] Fungsi Hapus Menu = not done.
 
-0.3:
-+ Fitur Admin/Pegawai done (+ validasi).
-
-0.2:
-+ Modif index.php untuk AdminBaru jadi adminbaru.php.
-+ Fitur Tambah AdminBaru beres, lengkap dengan Validasi (ditambah juga validasi setiap field/input).
-+ Semua file yang ada di folder __tampilan sudah dipindahkan ke ../restokuy/app/Views/ dan ../restokuy/assets/
-+ Baru beres Clean-up halaman untuk admin (rewrite bagian url karena struktur folder framework beda.. href, src).
-+ Rombak SessionFilter.
-+ Debug views di-nonaktifkan.
-+ Routes.php plus plus.
-+ Controllers/Admin, Controllers/Kasir, Controllers/Koki, Controllers/Pelayan.
-+ AkunBaruModel, AkunModel, PegawaiBaruModel, PegawaiModel.
-on-the-way:
-+ Pegawai & Menu.
-belum:
-+ Kasir, Pegawai, Pelayan.
-
-0.1:
-+ Added Codeigniter 4.1.3 Base.
-+ Moved all previous files into ../restokuy/public/__tampilan/ folder
-+ Renamed 'env' file to '.env'
-+ Modified CI_ENVIRONMENT from production to development in ../restokuy/.env
-+ Modified default database settings in ../restokuy/.env
-+ Modified $baseURL in ../restokuy/app/Config/App.php
-+ Modified $indexPage in ../restokuy/app/Config/App.php
-+ Changed $uriProtocol from 'REQUEST_URI' to 'PATH_INFO' in ../restokuy/app/Config/App.php
-+ Changed $routes->setAutoRoute from True to False in ../restokuy/app/Config/Routes.php
-+ Added NoAdminFilter in ../restokuy/app/Filters/NoAdminFilter.php
-+ Added SessionFilter in ../restokuy/app/Filters/SessionFilter.php
-+ Added NoAdminFilter, SessionFilter Reference in ../restokuy/app/Config/Filters.php
-+ Added 'noadmin', 'visitor' into $aliases in ../restokuy/app/Config/Filters.php
-+ Modified Home::index Controller.
-+ Added Sistem Controller.
-+ Added Sistem::login Controller.
-+ Added Sistem::logout Controller.
-+ Added $routes->match, get/post, 'xyz/new', Sistem::adminBaru, filter => noadmin:noreturn.
-+ Added $routes->match, get/post, 'login', Sistem::login, filter => visitor:login.
-+ Added $routes->get, 'logout', Sistem::logout, filter => noadmin.
+Note:
+.env file sudah dicoret dari .gitignore, sudah ada sekarang.

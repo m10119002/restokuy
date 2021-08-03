@@ -18,7 +18,7 @@ class AdminPegawai extends BaseController
         $pegawaiResult = $db->query($pegawaiSql)->getResult();
 
         $returnData = [
-            'pegawai_table' => $pegawaiResult
+            'tabel_pegawai' => $pegawaiResult
         ];
 
         if ($this->session->getFlashdata('error')) {

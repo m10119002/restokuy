@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MenuModel extends Model
+class DetailPesananBaruModel extends Model
 {
-    protected $table      = 'menu';
-    protected $primaryKey = 'id_menu';
+    protected $table      = 'detail_pesanan';
+    // protected $primaryKey = 'no_pesanan';
 
     // protected $useAutoIncrement = true;
 
     // protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = [];
+    protected $allowedFields = ['no_pesanan', 'id_menu', 'jumlah_pesanan'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';
@@ -24,15 +24,4 @@ class MenuModel extends Model
     // protected $validationRules    = [];
     // protected $validationMessages = [];
     // protected $skipValidation     = false;
-
-    public function getTabelCekMenu() {
-        $this->select('id_menu');
-        $this->select('nama_menu');
-        $this->select('kategori_menu');
-        $this->select('jenis_menu');
-        $this->select('harga_menu');
-        $this->select('gambar_menu');
-        $this->select('status');
-        return $this->get()->getResult();
-    }
 }

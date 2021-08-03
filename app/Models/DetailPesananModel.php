@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MenuModel extends Model
+class DetailPesananModel extends Model
 {
-    protected $table      = 'menu';
-    protected $primaryKey = 'id_menu';
+    protected $table      = 'detail_pesanan';
+    // protected $primaryKey = 'no_pesanan';
 
     // protected $useAutoIncrement = true;
 
@@ -24,15 +24,4 @@ class MenuModel extends Model
     // protected $validationRules    = [];
     // protected $validationMessages = [];
     // protected $skipValidation     = false;
-
-    public function getTabelCekMenu() {
-        $this->select('id_menu');
-        $this->select('nama_menu');
-        $this->select('kategori_menu');
-        $this->select('jenis_menu');
-        $this->select('harga_menu');
-        $this->select('gambar_menu');
-        $this->select('status');
-        return $this->get()->getResult();
-    }
 }

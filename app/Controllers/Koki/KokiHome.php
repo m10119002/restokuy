@@ -11,6 +11,6 @@ class KokiHome extends BaseController
     
     public function index()
 	{
-		return view('Koki\dashboard');
+		return view('Koki/dashboard');
 	}
 }

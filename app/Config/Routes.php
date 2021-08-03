@@ -57,17 +57,33 @@ $routes->group('admin', function($routes) {
 $routes->group('koki', function($routes) {
 	$routes->get('/', 'Koki\KokiHome::index', ['filter' => 'visitor:koki']);
 	$routes->get('dashboard', 'Koki\KokiHome::index', ['filter' => 'visitor:koki']);
+
+	$routes->get('menu', 'Koki\KokiMenu::index', ['filter' => 'visitor:koki']);
+	$routes->group('pemesanan', function($routes) {
+		$routes->get('/', 'Koki\KokiPemesanan::index', ['filter' => 'visitor:koki']);
+		$routes->get('detail', 'Koki\KokiPemesanan::detail', ['filter' => 'visitor:koki']);
+	});
 });
 $routes->group('pelayan', function($routes) {
 	$routes->get('/', 'Pelayan\PelayanHome::index', ['filter' => 'visitor:pelayan']);
 	$routes->get('dashboard', 'Pelayan\PelayanHome::index', ['filter' => 'visitor:pelayan']);
+
+	$routes->group('pesanan', function($routes) {
+		$routes->get('/', 'Pelayan\PelayanPesanan::index', ['filter' => 'visitor:pelayan']);
+		$routes->match(['get', 'post'], 'tambah', 'Pelayan\PelayanPesanan::tambah', ['filter' => 'visitor:pelayan']);
+		$routes->match(['get', 'post'], 'edit', 'Pelayan\PelayanPesanan::edit', ['filter' => 'visitor:pelayan']);
+		$routes->post('hapus', 'Pelayan\PelayanPesanan::hapus', ['filter' => 'visitor:pelayan']);
+	});
 });
 $routes->group('kasir', function($routes) {
 	$routes->get('/', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
 	$routes->get('dashboard', 'Kasir\KasirHome::index', ['filter' => 'visitor:kasir']);
 
 	$routes->match(['get', 'post'], 'transaksi', 'Kasir\KasirTransaksi::index', ['filter' => 'visitor:kasir']);
-	$routes->match(['get', 'post'], 'rekapitulasi', 'Kasir\KasirRekapitulasi::index', ['filter' => 'visitor:kasir']);
+	$routes->group('rekapitulasi', function($routes) {
+		$routes->get('/', 'Kasir\KasirRekapitulasi::index', ['filter' => 'visitor:kasir']);
+		$routes->match(['get', 'post'], 'filter', 'Kasir\KasirRekapitulasi::filter', ['filter' => 'visitor:kasir']);
+	});
 });
 $routes->match(['get', 'post'], 'logout', 'Sistem::logout', ['filter' => 'noadmin']);
 

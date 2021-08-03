@@ -11,6 +11,6 @@ class PelayanHome extends BaseController
     
     public function index()
 	{
-		return view('Pelayan\dashboard');
+		return view('Pelayan/dashboard');
 	}
 }

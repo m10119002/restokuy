@@ -101,6 +101,7 @@ class Sistem extends BaseController
 
             $this->session->set('id_akun', $result['id_akun']);
             $this->session->set('password', $result['password']);
+            $this->session->set('id_pegawai', $pegawai['id_pegawai']);
             $this->session->set('nama_pegawai', $pegawai['nama_pegawai']);
 
             return redirect()->route('/');
